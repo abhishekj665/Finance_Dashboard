@@ -168,12 +168,5 @@ export const mockTransactions: Transaction[] = [
     amount: 3000,
     category: "Freelance",
     type: "income",
-  },{
-    id: "24",
-    date: "2026-04-25",
-    amount: 2000,
-    category: "Salary",
-    type: "income",
-
-  }
+  },
 ];
