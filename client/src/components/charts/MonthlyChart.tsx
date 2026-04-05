@@ -12,24 +12,37 @@ import {
 
 import { useSelector } from "react-redux";
 import { selectMonthlyData } from "../../features/transactions/chartSelectors";
+import { useThemeMode } from "../../context/ThemeContext";
 
 const MonthlyChart = () => {
   const data = useSelector(selectMonthlyData);
+  const { isDarkMode } = useThemeMode();
+  const axisColor = isDarkMode ? "#cbd5e1" : "#475569";
+  const gridColor = isDarkMode ? "#334155" : "#e5e7eb";
+  const tooltipStyle = {
+    backgroundColor: isDarkMode ? "#0f172a" : "#ffffff",
+    border: `1px solid ${isDarkMode ? "#334155" : "#e5e7eb"}`,
+    color: isDarkMode ? "#e2e8f0" : "#0f172a",
+  };
 
   return (
-    <div className="bg-white p-5 rounded-2xl shadow-sm h-75">
-      <h2 className="text-lg font-semibold mb-4">
+    <div
+      className={`h-75 rounded-2xl p-5 shadow-sm ${
+        isDarkMode ? "bg-slate-900 text-slate-100" : "bg-white"
+      }`}
+    >
+      <h2 className="mb-4 text-lg font-semibold">
         Monthly Overview
       </h2>
 
       <ResponsiveContainer width="100%" height="85%">
         <LineChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
+          <CartesianGrid stroke={gridColor} strokeDasharray="3 3" />
 
-          <XAxis dataKey="month" />
-          <YAxis />
+          <XAxis dataKey="month" stroke={axisColor} />
+          <YAxis stroke={axisColor} />
 
-          <Tooltip />
+          <Tooltip contentStyle={tooltipStyle} />
 
           <Line
             type="monotone"
