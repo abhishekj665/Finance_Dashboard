@@ -17,13 +17,10 @@ const InsightsPanel = () => {
         </Typography>
 
         <div className="space-y-2 text-sm">
-
           <p>
             Highest spending category:{" "}
-            <span className="font-semibold">
-              {insights.topCategory}
-            </span>{" "}
-            (₹ {insights.topCategoryAmount})
+            <span className="font-semibold">{insights.topCategory}</span>{" "}
+            (â‚¹ {insights.topCategoryAmount})
           </p>
 
           <p>
@@ -42,10 +39,9 @@ const InsightsPanel = () => {
           <p>
             Current balance:{" "}
             <span className="font-semibold text-blue-600">
-              ₹ {insights.balance}
+              â‚¹ {insights.balance}
             </span>
           </p>
-
         </div>
       </CardContent>
     </Card>

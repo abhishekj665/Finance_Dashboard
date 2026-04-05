@@ -10,15 +10,26 @@ import {
 
 import { useSelector } from "react-redux";
 import { selectCategoryData } from "../../features/transactions/chartSelectors";
+import { useThemeMode } from "../../context/ThemeContext";
 
 const COLORS = ["#3b82f6", "#ef4444", "#f59e0b", "#10b981"];
 
 const CategoryChart = () => {
   const data = useSelector(selectCategoryData);
+  const { isDarkMode } = useThemeMode();
+  const tooltipStyle = {
+    backgroundColor: isDarkMode ? "#0f172a" : "#ffffff",
+    border: `1px solid ${isDarkMode ? "#334155" : "#e5e7eb"}`,
+    color: isDarkMode ? "#e2e8f0" : "#0f172a",
+  };
 
   return (
-    <div className="bg-white p-5 rounded-2xl shadow-sm h-[300px]">
-      <h2 className="text-lg font-semibold mb-4">
+    <div
+      className={`h-[300px] rounded-2xl p-5 shadow-sm ${
+        isDarkMode ? "bg-slate-900 text-slate-100" : "bg-white"
+      }`}
+    >
+      <h2 className="mb-4 text-lg font-semibold">
         Expense Breakdown
       </h2>
 
@@ -28,14 +39,14 @@ const CategoryChart = () => {
             data={data}
             dataKey="value"
             outerRadius={100}
-            label
+            label={{ fill: isDarkMode ? "#e2e8f0" : "#334155", fontSize: 12 }}
           >
             {data.map((_, i) => (
               <Cell key={i} fill={COLORS[i % COLORS.length]} />
             ))}
           </Pie>
 
-          <Tooltip />
+          <Tooltip contentStyle={tooltipStyle} />
         </PieChart>
       </ResponsiveContainer>
     </div>

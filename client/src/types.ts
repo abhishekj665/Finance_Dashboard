@@ -6,3 +6,5 @@ export interface Transaction {
   date: string;
   description?: string;
 }
+
+export type UserRole = "viewer" | "admin";
