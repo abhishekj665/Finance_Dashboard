@@ -202,3 +202,4 @@ From the `client` directory:
 ## License
 
 This project is currently provided for learning, development, and portfolio use.
+Email - jeveneabhi665@gmail.com
