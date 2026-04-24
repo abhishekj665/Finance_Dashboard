@@ -141,11 +141,4 @@ export const mockTransactions: Transaction[] = [
     category: "Food",
     type: "expense",
   },
-  {
-    id: "20",
-    date: "2026-04-05",
-    amount: 3000,
-    category: "Rent",
-    type: "expense",
-  },
 ];
